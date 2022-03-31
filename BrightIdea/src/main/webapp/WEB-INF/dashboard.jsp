@@ -10,6 +10,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Bright Ideas Dashboard</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
@@ -17,8 +19,8 @@
 	<body class="col-9 mx-auto mt-4">
 				<div class="d-flex justify-content-between">
 					<h4 class="ms-2 text-dark">
-						Welcome to Bright Ideas 
-						<c:out value=" ${ user.userName }!"></c:out>
+						Welcome
+						<c:out value=" ${ user.name }!"></c:out>
 					</h4>
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					  <div class="container-fluid">

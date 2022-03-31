@@ -23,8 +23,8 @@
 			<form:form action="/register" method="post" modelAttribute="newUser">
 				<div class="form-group">
 					<label>Name:</label>
-					<form:input path="userName" class="form-control" />
-					<form:errors path="userName" class="text-danger" />
+					<form:input path="name" class="form-control" />
+					<form:errors path="name" class="text-danger" />
 				</div>
       			<div class="form-group">
 					<label>Alias:</label>
@@ -49,23 +49,27 @@
 				<input type="submit" value="Register" class="btn btn-outline-success mt-3" />
 			</form:form>
 		</div>
-		<div class="col-4 mt-5">
-		<h1 class="text-light mt-5 mt-5">.</h1>
+		<div class="col-4 mt-5"> 
 			<h2>Log in</h2>
 			<!-- Login Form -->
-			<form:form action="/login" method="post" modelAttribute="newLogin">
+			<form method="post" action="/login">
+				<p class="text-dnger"></p>
 				<div class="form-group">
-					<label>Email:</label>
-					<form:input path="email" class="form-control" />
-					<form:errors path="email" class="text-danger" />
+					<c:out value="${error}"/> <!-- To valid login -->
+				
+				
+					<label type ="email" for="email">Email:</label><br/>
+					<input type ="text" name="email" class="form-control" id="email"/>
 				</div>
+				
 				<div class="form-group">
-					<label>Password:</label>
-					<form:password path="password" class="form-control" />
-					<form:errors path="password" class="text-danger" />
-				</div>
-				<input type="submit" value="Login" class="btn btn-outline-warning mt-3" />
-			</form:form>
+					<label for="password">Password:</label><br/>
+					<input type="password"  name="password"  class="form-control" id="password"/>
+					
+				</div></br>
+				
+				<input type="submit" value="Login"/>
+			</form>
 		</div>
 	</div>
 </body>

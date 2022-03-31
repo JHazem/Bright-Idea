@@ -25,13 +25,13 @@
 				    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 				        <li class="nav-item">
-				          <a class="nav-link active" aria-current="page" href="/books">Dashboard</a>
-				        </li>
-				        <li class="nav-item">
-				          <a class="nav-link active" aria-current="page" href="/books/new">Add a Show</a>
-				        </li>
-				        <li class="nav-item">
-				          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+				         	<a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
+			        	</li>
+			        	<li class="nav-item">
+		         			<a class="nav-link active" aria-current="page" href="/ideas/new">Add an Idea!</a>
+		       			</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link active" aria-current="page" href="/logout">Logout</a>
 				        </li>
 				      </ul>
 				    </div>

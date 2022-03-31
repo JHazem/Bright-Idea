@@ -9,7 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Create a Bright Idea</title>
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
 
 </head>
 <body>
@@ -23,8 +24,8 @@
 		    </button>
 		    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		        <li class="nav-item">
-		          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+		        <li >
+		          <a   href="/logout" class="btn btn-outline-primary">Logout</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -32,29 +33,28 @@
 		</nav>
 		</div>
 		<div class="col-6 ms-4 mt-4">
-		<form:form action="/ideas/new" method="post" modelAttribute="book">
+		<form:form action="/ideas/saveidea" method="post" modelAttribute="newIdea">
 			<div class="mb-3">
-				<form:label path="thoughts" class="form-label">Whats your Bright Idea?</form:label>
-				<form:textarea path="thoughts" class="form-control" />
-				<form:errors path="thoughts" class="text-danger" />
+				<form:label    path="idea" class="form-label">Whats your Bright Idea?</form:label>
+				<form:textarea path="idea" class="form-control" />
+				<form:errors   path="idea" class="text-danger" />
+				
+				<form:hidden   path="user"  value= "${userId}"/>
 			</div>
+			 <a href="/ideas" class="btn btn-primary">Cancel</a>
 			<button type="submit" class="btn btn-outline-primary">Submit</button>
-			<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Cancel</button>
 		</form:form>
-			<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-			  <div class="offcanvas-header">
-			    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Confirmation</h5>
-			    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			  </div>
-			  <div class="offcanvas-body">
-			    <div>
-			      Are you sure you want to cancel this bright idea? If so all data will be lost!
-			    </div>
-			    <div class="dropdown mt-3">
-			      <a class="nav-link active" aria-current="page" href="/dashboard">I am sure!</a>
-			    </div>
-			  </div>
-			</div>
+			 
+			<table> 
+			  	 <!-- To see all ideas -->
+              	 <c:forEach items="${idea.idea}" var="idea"> 
+             	 	 <tr>
+               		<td> <p>${idea.idea}</p></td> 
+               		 
+              	 </tr>
+              	 </c:forEach>
+           	</table>
+           
 		</div>
 	</div>
 	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
