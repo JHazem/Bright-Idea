@@ -26,7 +26,7 @@
 			          <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
 			        </li>
 			        <li class="nav-item">
-		         		 <a class="nav-link active" aria-current="page" href="/books/new">Add an Idea!</a>
+		         		 <a class="nav-link active" aria-current="page" href="/ideas/new">Add an Idea!</a>
 		       		 </li>
 			        <li class="nav-item">
 			          <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
@@ -37,8 +37,8 @@
 			</nav>
 		</div>
 		<div class="col-6 ms-4 mt-4">
-			<h4 class="ms-2 text-dark"><c:out value=" ${ users.alias }"></c:out> Says:</h4>
-			<h3 class="ms-2 text-dark"><c:out value=" ${ ideas.post }"></c:out> </h3>
+			<h4 class="ms-2 text-dark"><c:out value=" ${ ideas.user.alias }"></c:out> Says:</h4>
+			<h3 class="ms-2 text-dark"><c:out value=" ${ ideas.idea }"></c:out> </h3>
 		</div>
 		<div>
 			<h4 class="col-6 ms-4 mt-4">People who liked this idea:</h4>
@@ -51,12 +51,12 @@
 				</tr>
 			</thead>
 			<tbody class="bg-light text-center">
-				<%-- <c:forEach var="" items="${  }">
+				<c:forEach var="user" items="${allLikedUsers}">
 					<tr>
 						<td><a href="/user/${ user.id }"><c:out value="${ user.alias }"></c:out></a></td>
 						<td><c:out value="${ user.name }"></c:out></td>
 					</tr>
-				</c:forEach> --%>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

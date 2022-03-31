@@ -55,10 +55,10 @@
 					<tbody class="bg-light text-center">
 						<c:forEach var="ideas" items="${ allIdeas }">
 							<tr>
-								<td><a href="/user/${ ideas.user.id }"><c:out value="${ ideas.user.alias }"></c:out></a></td>
-								<td><c:out value="${ ideas.idea }"></c:out></td>
-								<td><button type="button" value="Like" class="btn btn-outline-primary">Like</button></td>
-								
+								<td><a href="/user/${ ideas.user.id }"><c:out value="${ideas.user.alias }"></c:out></a></td>
+								<td><a href="/bright_ideas/${ ideas.id }"><c:out value="${ ideas.idea }"></c:out></a></td>
+								<td><a href="/idea/${ideas.id}/like"> <button class="btn btn-outline-primary">Like</button></a></td>						 
+								<td><c:out value="${ideas.likers.size()}"/></td>								
 							</tr>
 						</c:forEach> 
 					</tbody>

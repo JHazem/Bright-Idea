@@ -1,6 +1,8 @@
 package com.brayden.brightIdea.models;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -51,6 +55,16 @@ public class Idea {
 	 @JoinColumn(name = "user_id")
 	 private User user;
 	 
+	 @ManyToMany(fetch = FetchType.LAZY)
+	 @JoinTable(
+	    	name = "likes",
+	    	joinColumns = @JoinColumn(name = "idea_id"),        //primary key of current table
+	    	inverseJoinColumns = @JoinColumn(name = "user_id")     //which other model you joining table with
+	    )
+	 
+	 private List<User> likers;
+	 
+	 
 	 public Idea() {}
 	 
 	 public Long getId() {
@@ -83,5 +97,10 @@ public class Idea {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
+	public List<User> getLikers() {
+		return likers;
+	}
+	public void setLikers(List<User> likers) {
+		this.likers = likers;
+	}
 }

@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -54,6 +57,14 @@ public class User {
     private Date updatedAt;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List <Idea> userIdea;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+    	name = "likes",
+    	joinColumns = @JoinColumn(name = "user_id"),              
+    	inverseJoinColumns = @JoinColumn(name = "idea_id")      
+    )
+    
+    private List<Idea> ideaLiked;
     
     public List<Idea> getUserIdea() {
 		return userIdea;
@@ -131,5 +142,13 @@ public class User {
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
 	}
+	public List<Idea> getIdeaLiked() {
+		return ideaLiked;
+	}
+	public void setIdeaLiked(List<Idea> ideaLiked) {
+		this.ideaLiked = ideaLiked;
+	}
+	
+	
 	
 }

@@ -1,6 +1,11 @@
 package com.brayden.brightIdea.services;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,4 +51,28 @@ public class IdeaService {
 	public void delete(Long id) {
 		this.repository.deleteById(id);
 	}
+	
+	//rfs
+	public void likeProject(Idea idea, User user) {
+		List<User> likers = idea.getLikers();		
+		likers.add(user);
+		repository.save(idea);		
+	}
+	
+	//rfs 
+	public List<User> getLikes(Idea idea) {
+		List<User> likers = idea.getLikers();
+		List<User> unqLikders = new ArrayList <> ();
+		Set<Long> ids = new HashSet<>();
+		for (User like : likers) { 
+			if (!ids.contains(like.getId())) {
+				ids.add(like.getId());
+				unqLikders.add(like);
+			}			
+		}
+		
+		return unqLikders;
+		
+	}
+
 }

@@ -27,17 +27,18 @@ public class UserController {
 	private UserRepository repository;
 	
 	@RequestMapping("/")
-	public String welcome(@ModelAttribute("newUser") User user, @ModelAttribute("newLogin") User loginUser, HttpSession session) {
+	public String welcome(@ModelAttribute("newLogin") User loginUser, @ModelAttribute("newUser") User user,  HttpSession session) {
 		
 //		user = this.service.findCurrentUser(session);
 //		if (user == null)
 //			return "redirect:/";
+		 
 		return "index.jsp";
 	}
 	
 	
 	@PostMapping("/login")
-	public String login(@Valid @ModelAttribute("newLogin") User user, BindingResult result, HttpSession session, Model model) {
+	public String login(@Valid @ModelAttribute("newLogin") User user, BindingResult result,  @ModelAttribute("newUser") User newUser, HttpSession session, Model model) {
 		
 		user = this.service.authenticate(user);
 		if(user != null) {
@@ -45,6 +46,7 @@ public class UserController {
 			session.setAttribute("userName", user.getName());
 			return "redirect:/dashboard";
 		}
+		
 		
 		model.addAttribute("message", "Invalid Credentials.");
 			
@@ -59,7 +61,7 @@ public class UserController {
 	
 	
 	@PostMapping("/register")
-	public String register(@Valid @ModelAttribute("newUser") User user, BindingResult result, HttpSession session) {
+	public String register(@Valid @ModelAttribute("newUser") User user, BindingResult result, @ModelAttribute("newLogin") User newLogin, HttpSession session) {
 		
 		if(!user.getPassword().equals(user.getConfirm())) {
 			result.rejectValue("confirm", "Matches", "The passwords must match!!!");
@@ -79,7 +81,7 @@ public class UserController {
 			
 		User newUser = this.service.create(user);
 		session.setAttribute("userID", newUser.getId());
-		return "redirect:/brightIdea";
+		return "redirect:/dashboard";
 	}
 
 }

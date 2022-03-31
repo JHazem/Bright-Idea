@@ -67,6 +67,7 @@
 				<input type="submit" value="Login" class="btn btn-outline-warning mt-3" />
 			</form:form>
 		</div>
+		<h3><c:out value="${message}" /></h3>
 	</div>
 </body>
 </html>

@@ -60,4 +60,15 @@ public class IdeaController {
 		return "redirect:/dashboard";
 	}
 	
+    //rfs like Project apply like 
+    @GetMapping("/idea/{id}/like")
+    public String likeProject(@PathVariable Long id, HttpSession session) {
+    	Idea idea = service.find(id);
+    	User user = this.userService.findCurrentUser(session);
+    	service.likeProject(idea, user);
+    	
+    	return "redirect:/dashboard";
+    }
+
+	
 }
